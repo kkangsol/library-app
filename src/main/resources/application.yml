@@ -30,7 +30,7 @@ spring:
     url: "jdbc:mysql://localhost/library"
     # jdbc : java database connector
     username: "root"
-    password: "950619"
+    password: "Abcd1234!"
     driver-class-name: com.mysql.cj.jdbc.Driver
 jpa:
   hibernate:
