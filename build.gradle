@@ -1,26 +1,56 @@
+
+// 플러그인 추가 가능
 plugins {
+
 	id 'org.springframework.boot' version '2.7.6'
+	// 스프링 빌드시 jar파일 생성, 스프링 애플리케이션 실행, 다른 플러그인 지원
+
 	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+	// 외부 라이브러리, 프레임워크 버전관리. 얽혀있는 의존성 관리
+
 	id 'java'
+	//Java 프로젝트 개발 기능 추가. 다른 JVM언어 Gradle 플러그인 사용 기반 제공
 }
 
+//프로젝트 관련 설정
 group = 'com.example'
+// 프로젝트 그룹. 빌드 결과물에 프로젝트 그룹에 대한 정보
 version = '0.0.1-SNAPSHOT'
+// 프로젝트 버전
 sourceCompatibility = '11'
+// 사용하고 있는 JDK 버전
 
+// 외부 라이브러리,프레임워크를 가져오는 장소 설정
 repositories {
-	mavenCentral()
+	mavenCentral()	//maven 중앙 저장소
 }
 
+// 우리가 사용하는 라이브러리, 프레임워크 표시
 dependencies {
+
+	implementation 'org.projectlombok:lombok'
+
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// org.springframework.boot:spring-boot-starter-data-jpa가 만든 spring-boot-starter-data-jpa를 가져와라
+	// JPA를 스프링과 함께 사용하기 위한 모든 것
+
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// 스프링으로 web 관련 개발을 하기 위해 필요한 모든것(톰캣, 어노테이션 등)
+
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'mysql:mysql-connector-java'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	/*
+	-Dependency Configuration의 종류-
+	implementation : 해당 의존성을 항상 사용
+	runtimeOnly : 코드를 실행할 때에만 의존성을 사용
+	testImplementation : 테스트 코드를 컴파일 하거나 실행시킬 때 항시 사용
+	*/
 }
 
+// 테스트를 수행할 때 Junit5 사용
 tasks.named('test') {
 	useJUnitPlatform()
 }

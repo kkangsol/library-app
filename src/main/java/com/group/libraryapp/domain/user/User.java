@@ -1,12 +1,14 @@
 package com.group.libraryapp.domain.user;
 
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity //스프링이 User객체와 user 테이블을 같은 것으로 바라본다.
+@NoArgsConstructor  //기본생성자 만들어주는 롬복
 public class User {
 
     @Id //이 필드를 primary key로 간주한다
@@ -24,9 +26,6 @@ public class User {
     //User 입장에서는 1:N관계 / 연관관계의 주인이 아닌 쪽에 mappedBy 옵션 >> 연관관계 주인이 가지고있는 필드 이름 값으로 넣어줌(user)
     private List<UserLoanHistory> userLoanHistories = new ArrayList<>();
 
-    protected User(){   //JPA를 사용하기 위해서는 기본 생성자가 꼭 필요하다
-
-    }
 
     public User(String name, Integer age) {
         if(name == null || name.isBlank()){
